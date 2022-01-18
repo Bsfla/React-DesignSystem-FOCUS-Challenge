@@ -31,7 +31,7 @@ export const ClassStore = styled.div `
 export const SearchForm = styled.form `
    margin-left: 40px;
    width: 25em;
-   padding: 13px;
+   padding: 11.5px;
    display: flex;
    border-radius: 30px;
    background-color: #eeeeee;
@@ -50,7 +50,7 @@ export const StyledNavigation = styled.div `
   margin-left: 10em;
   
   span {
-      font-size: 13px;
+      font-size: 14px;
       margin-right: 17px;
       cursor: pointer;
   }
