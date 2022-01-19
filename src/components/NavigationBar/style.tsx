@@ -53,5 +53,4 @@ export const RedDot = styled.div `
   position: absolute;
   top: 18px;
   right: 0;
-  
 `
