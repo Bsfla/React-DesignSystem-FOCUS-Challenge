@@ -1,13 +1,10 @@
-import { useCallback, useEffect, useRef } from "react";
 import { CarouselWrapper, Container,CardContainer, Card, TitleBox, Contents, ProgressBarContainer } from "./style";
 import { ProgressBar } from "@class101/ui";
 import "slick-carousel/slick/slick.css";
+import { useRef } from "react";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { white } from "@class101/ui/dist/core/Colors";
-
-
-
 
 const settings = {
     dots: false,
@@ -16,8 +13,9 @@ const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 2000,
 }
+
 
 interface Props {
     data: Array<{
@@ -31,25 +29,30 @@ interface Props {
   }
 
 const Carousel = ({ data }: Props) => {
+    const sliderRef : any = useRef(null);
     return (
-        
-          <CarouselWrapper>
-             <Container>
-                 <CardContainer>
-                  <Card />
-                 </CardContainer>
+        <CarouselWrapper>
+          <Slider 
+            ref={sliderRef}
+            {...settings}
+           >
+            {data.map((el) => {
+              return ( 
+             <Container key={el.id}>
+                
                  <Contents>
                    <TitleBox>
-                    <span>미라클 모닝 패키지 지금 신청하면 할인</span>
-                    <span>최고의 후기로 선정되면 6개월 동안 쿠폰이 계속</span>
+                    <span>{el.title}</span>
+                    <span>{el.subtitle}</span>
                    </TitleBox>
                    <ProgressBarContainer>
-                       <span>5 | 10</span>
+                       <span>{el.id | data.length}</span>
                        <ProgressBar value={30} height={1} barColor={white}/>
                    </ProgressBarContainer>
                  </Contents>
-         
              </Container>
+              )})}
+             </Slider>
           </CarouselWrapper>
        
     )
